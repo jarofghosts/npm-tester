@@ -1,0 +1,33 @@
+{
+  "name": "npm-tester",
+  "version": "0.0.0",
+  "description": "npm tester client",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jarofghosts/npm-tester.git"
+  },
+  "keywords": [
+    "npm",
+    "tester",
+    "client"
+  ],
+  "author": "jesse keane <me@jessekeane.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jarofghosts/npm-tester/issues"
+  },
+  "homepage": "https://github.com/jarofghosts/npm-tester",
+  "dependencies": {
+    "nopt": "^2.2.1",
+    "hyperquest": "^0.3.0",
+    "tap-parser": "^0.5.0",
+    "through": "^2.3.4"
+  }
+}
