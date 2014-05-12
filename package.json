@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "npm tester client",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "npm-tester": "./bin/npm-tester"
+  },
   "directories": {
     "test": "test"
   },

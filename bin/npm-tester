@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+var path = require('path')
+
+var nopt = require('nopt')
+
+var stream = require('../')
+
+var CWD = process.cwd()
+
+var noptions = {
+    server: String
+  , name: String
+}
+
+var shorts = {
+    s: ['--server']
+  , n: ['--name']
+}
+
+var options = nopt(noptions, shorts, process.argv)
+
+if(!options.server && !options.name) {
+  if(/^http(s)?:/.test(process.argv[2])) {
+    options.server = process.argv[2]
+    options.name = process.argv[3]
+  } else {
+    options.server = process.argv[3]
+    options.name = process.argv[2]
+  }
+}
+
+var tester = stream(
+    options.server || 'http://npmtesters.org'
+  , options.name || get_package_name() || path.basename(CWD)
+)
+
+process.stdin.pipe(tester).pipe(process.stdout)
+process.stdin.on('end', function() {
+  tester.submit()
+})
+
+function get_package_name() {
+  try {
+    return require('./package.json').name
+  } catch(e) {
+    return
+  }
+}

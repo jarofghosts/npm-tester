@@ -6,7 +6,7 @@ var request = require('hyperquest')
 
 module.exports = tester
 
-function tester(server) {
+function tester(server, name) {
   var parser = tap(submit)
     , start = Date.now()
     , results
@@ -46,7 +46,7 @@ function tester(server) {
       , elapsed: Date.now() - start
     }
 
-    request.post(server)
+    request.post(server + '/api/results/' + name)
       .on('error', onerror)
       .on('end', onend)
       .end(JSON.stringify(result_data))
