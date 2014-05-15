@@ -54,7 +54,7 @@ function tester(server, name) {
     function onend() {
       process.stderr.write('submitted results!\n')
       stream.queue(null)
-      process.exit(+(!results.ok))
+      process.exit(results.fail.length)
     }
   }
 }
